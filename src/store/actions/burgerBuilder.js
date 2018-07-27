@@ -1,3 +1,5 @@
+// ALL ACTIONS GET EXPORTED FROM ONE FILE, ./index.js
+
 //dependencies
 import axios from '../../axios-orders';
 //constants

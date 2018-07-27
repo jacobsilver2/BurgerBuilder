@@ -3,13 +3,11 @@ import React, { Component } from 'react';
 import {Route, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux'
 
-//css
-import classes from './Checkout.css';
 //components
 import CheckoutSummary from '../../components/Burger/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
-//actions
-import * as actions from '../../store/actions/index'
+
+
 
 class Checkout extends Component {
 

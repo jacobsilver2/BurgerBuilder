@@ -13,9 +13,12 @@ import './index.css';
 //reducers
 import burgerBuilderReducer from './store/reducers/burgerBuilder';
 import order from './store/reducers/order';
+import authReducer from './store/reducers/auth'
 
-const rootReducer = combineReducers({burgerBuilder: burgerBuilderReducer, order: order}) 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const rootReducer = combineReducers({burgerBuilder: burgerBuilderReducer, order: order, auth: authReducer}) 
+
+//using the process... stuff makes it so you can only use redux devtools in development mode
+const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 const store = createStore(rootReducer, composeEnhancers(
   applyMiddleware(thunk)
 ));

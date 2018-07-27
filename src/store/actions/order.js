@@ -1,3 +1,5 @@
+// ALL ACTIONS GET EXPORTED FROM ONE FILE, ./index.js
+
 //axios config file
 import axios from '../../axios-orders';
 import * as actionTypes from './actionTypes';
@@ -52,10 +54,10 @@ export const purchaseInit = () => {
 }
 
 //async actions
-export const purchaseBurger = (orderData) => {
+export const purchaseBurger = (orderData, token) => {
   return dispatch => {
     dispatch(purchaseBurgerStart())
-    axios.post('/orders.json', orderData)
+    axios.post('/orders.json?auth=' + token, orderData)
     .then(response => {
         dispatch(purchaseBurgerSuccess(response.data.name, orderData))
         
@@ -66,10 +68,12 @@ export const purchaseBurger = (orderData) => {
   }
 }
 
-export const fetchOrders = () => {
+export const fetchOrders = (token, userId) => {
   return dispatch => {
     dispatch(fetchOrdersStart());
-    axios.get('/orders.json')
+    //making a query param to fetch data from the server which matches the userId.  Make sure to wrap userId in double quotation marks! Also don't forget to wrap the userId variable in double quotes
+    const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';  
+    axios.get('/orders.json' + queryParams)
     .then(res => {
       const fetchedOrders = [];
       for (let key in res.data) {
