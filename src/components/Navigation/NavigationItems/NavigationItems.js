@@ -1,10 +1,15 @@
+//! Dependency Imports
 import React from 'react';
+//! CSS Imports
 import classes from './NavigationItems.css';
+//! Component Imports
 import NavigationItem from './NavigationItem/NavigationItem';
 
-//receives isAuthenticated via props.  Receives from Toolbar and Sidedrawer
+//!receives isAuthenticated via props.  Receives from Toolbar and Sidedrawer
 
-//depending on truthiness of isAuthenticated, either the LOGIN or LOGOUT routewill render
+//!depending on truthiness of isAuthenticated, either the LOGIN or LOGOUT routewill render
+
+
 const navigationItems = (props) => (
     <ul className={classes.NavigationItems}>
         <NavigationItem link="/">Burger Builder</NavigationItem>        
